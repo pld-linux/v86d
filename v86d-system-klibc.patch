@@ -1,0 +1,19 @@
+--- v86d-0.1.3/Makefile.orig	2007-12-03 01:27:11.000000000 +0100
++++ v86d-0.1.3/Makefile	2008-03-20 11:38:37.000000000 +0100
+@@ -3,14 +3,13 @@
+ .PHONY: clean install install_testvbe x86emu lrmi
+ 
+ INSTALL = install
+-KDIR   ?= /lib/modules/$(shell uname -r)/source
+ 
+ ifeq ($(call config_opt,CONFIG_KLIBC),true)
+-	export CC = klcc
++	export CC = klcc -static
++	CFLAGS += -I/usr/include/klibc
+ endif
+ 
+ CFLAGS ?= -Wall -g -O2
+-CFLAGS += -I$(KDIR)/include
+ 
+ ifeq ($(call config_opt,CONFIG_X86EMU),true)
+ 	CFLAGS += -Ilibs/x86emu
