@@ -1,3 +1,7 @@
+# TODO
+# - thinko: kernel module searches program from /sbin
+#   move here (and dependant libs to) /sbin,/%{_libdir} or patch kernel module:
+#   linux-2.6.24/drivers/video/uvesafb.c
 #
 # Conditional build:
 %bcond_with	x86emu	# x86emu instead of LRMI/vm86
@@ -63,6 +67,7 @@ sed -i 's:/sbin/v86d 0755:/usr/sbin/v86d 0755:' misc/initramfs
 rm -rf $RPM_BUILD_ROOT
 
 install -D v86d $RPM_BUILD_ROOT%{_sbindir}/v86d
+# XXX what uses this in PLD?
 install -D misc/initramfs $RPM_BUILD_ROOT%{_datadir}/v86d/initramfs
 
 %clean
