@@ -1,7 +1,11 @@
---- v86d-0.1.5.2/Makefile.orig	2008-07-21 19:10:25.248758520 +0200
-+++ v86d-0.1.5.2/Makefile	2008-07-21 19:15:12.152748463 +0200
-@@ -12,17 +12,12 @@
- CFLAGS ?= -Wall $(OPTFLAGS)
+--- v86d-0.1.6.orig/Makefile	2008-07-27 10:35:41.000000000 +0200
++++ v86d-0.1.6/Makefile	2008-07-27 10:36:27.000000000 +0200
+@@ -9,20 +9,15 @@
+ 	CFLAGS += -I/usr/include/klibc
+ endif
+ 
+-CFLAGS ?= -Wall -g -O2
++CFLAGS ?= -Wall $(OPTFLAGS)
  
  ifeq ($(call config_opt,CONFIG_X86EMU),true)
 -	CFLAGS += -Ilibs/x86emu
@@ -11,7 +15,7 @@
 -	V86LIB = x86emu
  else
 -	CFLAGS += -Ilibs/lrmi-0.10
--	LDFLAGS += -Llibs/lrmi-0.10 -static -Wl,-z,execheap
+-	LDFLAGS += -Llibs/lrmi-0.10 -static
 +	LDFLAGS += -Wl,-z,execheap
  	LDLIBS += -llrmi
  	V86OBJS = v86_lrmi.o
