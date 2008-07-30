@@ -25,8 +25,11 @@ BuildRequires:	klibc-static >= 1.5.8-1
 %if %{with x86emu}
 BuildRequires:	x86emu-devel
 %else
-BuildRequires:	lrmi-devel
+BuildRequires:	lrmi-devel >= 0.10-2
 %endif
+%endif
+%ifarch %{ix86}
+Requires:	lrmi >= 0.10-2
 %endif
 ExclusiveArch:	%{ix86} %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
