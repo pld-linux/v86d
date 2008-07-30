@@ -1,6 +1,6 @@
 --- v86d-0.1.6.orig/Makefile	2008-07-27 10:35:41.000000000 +0200
 +++ v86d-0.1.6/Makefile	2008-07-27 10:36:27.000000000 +0200
-@@ -9,20 +9,15 @@
+@@ -9,20 +9,14 @@
  	CFLAGS += -I/usr/include/klibc
  endif
  
@@ -16,7 +16,6 @@
  else
 -	CFLAGS += -Ilibs/lrmi-0.10
 -	LDFLAGS += -Llibs/lrmi-0.10 -static
-+	LDFLAGS += -Wl,-z,execheap
  	LDLIBS += -llrmi
  	V86OBJS = v86_lrmi.o
 -	V86LIB = lrmi
