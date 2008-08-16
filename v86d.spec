@@ -28,7 +28,7 @@ BuildRequires:	x86emu-devel
 BuildRequires:	lrmi-devel >= 0.10-2
 %endif
 %endif
-%ifarch %{ix86}
+%if %{without x86emu}
 Requires:	lrmi >= 0.10-2
 %endif
 ExclusiveArch:	%{ix86} %{x8664}
