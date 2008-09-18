@@ -24,7 +24,7 @@ BuildRequires:	linux-libc-headers >= 7:2.6.24
 BuildRequires:	klibc-static >= 1.5.8-1
 %else
 %if %{with x86emu}
-BuildRequires:	x86emu-devel
+BuildRequires:	x86emu-devel >= 0.8-2
 %else
 BuildRequires:	lrmi-devel >= 0.10-3
 %endif
@@ -32,7 +32,7 @@ BuildRequires:	lrmi-devel >= 0.10-3
 %if %{without x86emu}
 Requires:	lrmi >= 0.10-3
 %endif
-ExclusiveArch:	%{ix86} %{x8664}
+ExclusiveArch:	%{ix86} %{x8664} ppc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sbindir	/sbin
