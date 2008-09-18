@@ -17,6 +17,7 @@ Source0:	http://dev.gentoo.org/~spock/projects/uvesafb/archive/%{name}-%{version
 # Source0-md5:	8a3430eca4ae87059a699562d4b6e280
 Patch0:		%{name}-system-klibc.patch
 Patch1:		%{name}-system-libs.patch
+Patch2:		%{name}-gcc4.patch
 URL:		http://dev.gentoo.org/~spock/projects/uvesafb/
 BuildRequires:	linux-libc-headers >= 7:2.6.24
 %if %{with klibc}
@@ -50,6 +51,7 @@ Linuksa uvesafb. Obecnie obsługuje architektury x86 i x86-64.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 sed -i 's:-g -O2:$(OPTFLAGS):' Makefile
 
 %build
