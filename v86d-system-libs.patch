@@ -1,5 +1,5 @@
---- v86d-0.1.6.orig/Makefile	2008-07-27 10:35:41.000000000 +0200
-+++ v86d-0.1.6/Makefile	2008-07-27 10:36:27.000000000 +0200
+--- v86d-0.1.9/Makefile	2008-10-18 20:39:22.000000000 +0000
++++ v86d-0.1.9/Makefile	2008-10-18 20:41:41.000000000 +0000
 @@ -9,20 +9,14 @@
  	CFLAGS += -I/usr/include/klibc
  endif
@@ -11,13 +11,13 @@
 -	CFLAGS += -Ilibs/x86emu
 -	LDFLAGS += -Llibs/x86emu
  	LDLIBS += -lx86emu
- 	V86OBJS = v86_x86emu.o v86_mem.o
+ 	V86OBJS = v86_x86emu.o v86_mem.o v86_common.o 
 -	V86LIB = x86emu
  else
 -	CFLAGS += -Ilibs/lrmi-0.10
--	LDFLAGS += -Llibs/lrmi-0.10 -static
+-	LDFLAGS += -Llibs/lrmi-0.10 -static -Wl,--section-start,vm86_ret=0x9000
  	LDLIBS += -llrmi
- 	V86OBJS = v86_lrmi.o
+ 	V86OBJS = v86_lrmi.o v86_common.o
 -	V86LIB = lrmi
  endif
  
