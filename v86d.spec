@@ -15,6 +15,7 @@ License:	GPL v2
 Group:		Applications/System
 Source0:	http://dev.gentoo.org/~spock/projects/uvesafb/archive/%{name}-%{version}.tar.bz2
 # Source0-md5:	ebbbc8e7013c9544b6ba6981add43831
+Source1:	%{name}-uvesafb.conf
 Patch0:		%{name}-system-klibc.patch
 Patch1:		%{name}-system-libs.patch
 URL:		http://dev.gentoo.org/~spock/projects/uvesafb/
@@ -64,7 +65,10 @@ sed -i 's:-g -O2:$(OPTFLAGS):' Makefile
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -D v86d $RPM_BUILD_ROOT%{_sbindir}/v86d
+install -d $RPM_BUILD_ROOT{%{_sbindir},/etc/modprobe.d}
+
+install %{name} $RPM_BUILD_ROOT%{_sbindir}/%{name}
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/modprobe.d/uvesafb.conf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -73,3 +77,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README TODO
 %attr(755,root,root) %{_sbindir}/v86d
+%config(noreplace) %verify(not md5 mtime size) /etc/modprobe.d/uvesafb.conf
