@@ -10,7 +10,7 @@ Summary:	uvesafb userspace helper that runs x86 code in an emulated environment
 Summary(pl.UTF-8):	Program pomocniczy uvesafb uruchamiający kod x86 w emulowanym środowisku
 Name:		v86d
 Version:	0.1.9
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://dev.gentoo.org/~spock/projects/uvesafb/archive/%{name}-%{version}.tar.bz2
@@ -18,10 +18,14 @@ Source0:	http://dev.gentoo.org/~spock/projects/uvesafb/archive/%{name}-%{version
 Source1:	%{name}-uvesafb.conf
 Patch0:		%{name}-system-klibc.patch
 Patch1:		%{name}-system-libs.patch
+Patch2:		%{name}-klibc-ldflags.patch
 URL:		http://dev.gentoo.org/~spock/projects/uvesafb/
 BuildRequires:	linux-libc-headers >= 7:2.6.24
 %if %{with klibc}
 BuildRequires:	klibc-static >= 1.5.8-1
+%if %{with x86emu}
+BuildRequires:	x86emu-devel(klibc)
+%endif
 %else
 %if %{with x86emu}
 BuildRequires:	x86emu-devel
@@ -52,6 +56,10 @@ Linuksa uvesafb. Obecnie obsługuje architektury x86 i x86-64.
 %patch0 -p1
 %patch1 -p1
 sed -i 's:-g -O2:$(OPTFLAGS):' Makefile
+
+%if "%{_arch}" == "x86_64"
+%patch2 -p1
+%endif
 
 %build
 # not ac
