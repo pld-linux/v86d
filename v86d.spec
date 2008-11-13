@@ -56,10 +56,7 @@ Linuksa uvesafb. Obecnie obsługuje architektury x86 i x86-64.
 %patch0 -p1
 %patch1 -p1
 sed -i 's:-g -O2:$(OPTFLAGS):' Makefile
-
-%if "%{_arch}" == "x86_64"
 %patch2 -p1
-%endif
 
 %build
 # not ac
