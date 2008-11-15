@@ -65,8 +65,12 @@ sed -i 's:-g -O2:$(OPTFLAGS):' Makefile
 	--with%{!?with_x86emu:out}-x86emu
 
 %{__make} \
-	%{!?with_klibc:CC="%{__cc}"} \
-	OPTFLAGS="%{rpmcflags}%{!?with_klibc:%{!?with_x86emu: -I/usr/include/lrmi}}"
+%if %{with klibc}
+	LIB=%{_lib} \
+%else
+	CC="%{__cc}" \
+%endif
+	OPTFLAGS="%{rpmcflags}%{!?with_x86emu: -I/usr/include/lrmi}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
