@@ -2,7 +2,7 @@
 # Conditional build:
 %bcond_with	x86emu	# x86emu instead of LRMI/vm86
 %bcond_without	initrd	# don't build klibc based helper for initrd/initramfs
-#
+
 %ifnarch %{ix86}
 %define		with_x86emu	1
 %endif
@@ -10,7 +10,7 @@ Summary:	uvesafb userspace helper that runs x86 code in an emulated environment
 Summary(pl.UTF-8):	Program pomocniczy uvesafb uruchamiający kod x86 w emulowanym środowisku
 Name:		v86d
 Version:	0.1.9
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://dev.gentoo.org/~spock/projects/uvesafb/archive/%{name}-%{version}.tar.bz2
@@ -54,13 +54,15 @@ Linuksa uvesafb. Obecnie obsługuje architektury x86 i x86-64.
 Summary:	uvesafb userspace helper that runs x86 code in an emulated environment - initrd version
 Summary(pl.UTF-8):	Program pomocniczy uvesafb uruchamiający kod x86 w emulowanym środowisku - wersja dla initrd
 Group:		Base
+Requires:	%{name} = %{version}-%{release}
 
 %description initrd
 uvesafb userspace helper that runs x86 code in an emulated environment
 - initrd version
 
 %description initrd -l pl.UTF-8
-Program pomocniczy uvesafb uruchamiający kod x86 w emulowanym środowisku
+Program pomocniczy uvesafb uruchamiający kod x86 w emulowanym
+środowisku
 - wersja dla initrd
 
 %prep
