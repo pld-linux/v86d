@@ -58,12 +58,11 @@ Requires:	%{name} = %{version}-%{release}
 
 %description initrd
 uvesafb userspace helper that runs x86 code in an emulated environment
-- initrd version
+- initrd version.
 
 %description initrd -l pl.UTF-8
 Program pomocniczy uvesafb uruchamiający kod x86 w emulowanym
-środowisku
-- wersja dla initrd
+środowisku - wersja dla initrd.
 
 %prep
 %setup -q
