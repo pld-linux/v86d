@@ -10,7 +10,7 @@ Summary:	uvesafb userspace helper that runs x86 code in an emulated environment
 Summary(pl.UTF-8):	Program pomocniczy uvesafb uruchamiający kod x86 w emulowanym środowisku
 Name:		v86d
 Version:	0.1.10
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://dev.gentoo.org/~spock/projects/uvesafb/archive/%{name}-%{version}.tar.bz2
