@@ -66,10 +66,10 @@ Program pomocniczy uvesafb uruchamiający kod x86 w emulowanym
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 sed -i 's:-g -O2:$(OPTFLAGS):' Makefile
-%patch2 -p1
+%patch -P2 -p1
 
 %build
 %if %{with initrd}
